@@ -1,0 +1,189 @@
+
+<!DOCTYPE html>
+<html lang="en" dir="ltr">
+
+<head>
+  <title>Simple Calculator</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <link rel="stylesheet" href="js/jquery.mobile-1.4.5.min.css">
+  <script src="js/jquery.js"></script>
+  <script src="js/jquery.mobile-1.4.5.min.js"></script>
+
+  <script src="cordova.js"></script>
+
+</head>
+
+
+
+<body>
+  <div data-role="page" id="pageone" data-theme="b">
+    <div data-role="header">
+      <h1>Simple Calculator</h1>
+      <div data-role="navbar">
+        <ul>
+          <li><a href="#pageone" data-icon="home" data-transition="pop">Home</a></li>
+          <li><a href="#pagetwo" data-icon="grid" data-transition="slide">Calculator</a></li>
+          <li><a href="#pagethree" data-icon="info" data-transition="pop">Help</a></li>
+        </ul>
+      </div>
+    </div>
+    <div data-role="main" class="ui-content">
+      <p> This is a jQuery mobile exercise which provides the user with a calculator for basic mathematical operations</p>
+
+    </div>
+    <div data-role="footer">
+      <h1>Homework</h1>
+
+    </div>
+  </div>
+
+  <div data-role="page" id="pagetwo" data-theme="a">
+    <div data-role="header">
+      <h1>Simple Calculator</h1>
+      <div data-role="navbar">
+        <ul>
+          <li><a href="#pageone" data-icon="home" data-transition="slide">Home</a></li>
+          <li><a href="#pagetwo" data-icon="grid" data-transition="pop">Calculator</a></li>
+          <li><a href="#pagethree" data-icon="info" data-transition="slide">Help</a></li>
+        </ul>
+      </div>
+    </div>
+    <div data-role="main" class="ui-content">
+      <form method="post" action="demoform.asp">
+
+        <input type="number" name="textvalue1" id="textvalue1" placeholder="Insert Number 1">
+
+        <label for="qwerty" class="ui-hidden-accessible">Native select:</label>
+        <select name="qwerty" id="qwerty">
+              <option value="1">+</option>
+              <option value="2">-</option>
+              <option value="3">*</option>
+          <option value="4">/</option>
+        </select>
+
+
+        <input type="number" name="textvalue2" id="textvalue2" placeholder="Insert Number 2" value="">
+
+        <a href="#pagefive" class="ui-btn ui-corner-all" id="calculate_operations">Calculate</a>
+
+    </div>
+    <div data-role="footer">
+
+      <h1>Homework</h1>
+
+    </div>
+  </div>
+
+  <div data-role="page" id="pagethree" data-theme="b">
+    <div data-role="header">
+      <h1>Simple Calculator</h1>
+      <div data-role="navbar">
+        <ul>
+          <li><a href="#pageone" data-icon="home" data-transition="pop">Home</a></li>
+          <li><a href="#pagetwo" data-icon="grid" data-transition="pop">Calculator</a></li>
+          <li><a href="#pagethree" data-icon="info" data-transition="pop">Help</a></li>
+        </ul>
+      </div>
+    </div>
+    <div data-role="main" class="ui-content">
+      <p> This is the help section and provides basic information about how to use the calculator </p>
+      <a href="#pagefour" class="ui-btn ui-corner-all ui-icon-info ui-btn-icon-left">More Info</a>
+
+    </div>
+    <div data-role="footer">
+
+      <h1>Homework</h1>
+
+    </div>
+  </div>
+  <div data-role="page" data-dialog="true" id="pagefour" data-theme="c">
+    <div data-role="header">
+       <h1>More Info!</h1>
+    </div>
+    <div data-role="main" class="ui-content"> 
+      <p> You have requested more infomation about the App! <p>
+          <a href="#pagethree" class="ui-btn ui-corner-all ui-icon-back ui-btn-icon-left">Dismiss</a>
+    </div>
+  </div>
+
+  <div data-role="page" id="pagefive" data-theme="a">
+    <div data-role="header">
+      <h1>Results</h1>
+      <div data-role="navbar">
+        <ul>
+          <li><a href="#pageone" data-icon="home" data-transition="pop">Home</a></li>
+          <li><a href="#pagetwo" data-icon="grid" data-transition="pop">Calculator</a></li>
+          <li><a href="#pagethree" data-icon="info" data-transition="pop">Help</a></li>
+        </ul>
+      </div>
+    </div>
+    <div data-role="main" class="ui-content">
+      <h2>Operation:</h2>
+      <span id="value1">value1 </span><span id="operation"> operation </span><span id="value2">value2</span>
+      <h2>Result:</h2>
+      <p id="result"></p>
+
+      <a href="#pagetwo" class="ui-btn ui-icon-arrow-l ui-btn-icon-left">Back</a>
+    </div>
+  </div>
+</body>
+
+<script>
+  $(document).ready(function() {
+    $("#calculate_operations").on("click", function() {
+      window.location.href = "#pagefive";
+
+
+      var num1 = parseInt($("#textvalue1").val());
+      var num2 = parseInt($("#textvalue2").val());
+      // var result
+
+      var op = parseInt($("#qwerty").val());
+      switch (op) {
+        case 1:
+          var result = num1 + num2;
+          $("#value1").text("" + num1);
+          $("#operation").text("+");
+          $("#value2").text("" + num2);
+          $("#result").text("" + result);
+          // alert("Result= " + result);
+          // return false;
+          break;
+
+        case 2:
+          var result = num1 - num2;
+          $("#value1").text("" + num1);
+          $("#operation").text("-");
+          $("#value2").text("" + num2);
+          $("#result").text("" + result);
+          // alert("Result= " + result);
+          // return false;
+          break;
+
+        case 3:
+          var result = num1 * num2;
+          $("#value1").text("" + num1);
+          $("#operation").text("*");
+          $("#value2").text("" + num2);
+          $("#result").text("" + result);
+          // alert("Result= " + result);
+          // return false;
+          break;
+
+        case 4:
+          var result = num1 / n2;
+          $("#value1").text("" + num1);
+          $("#operation").text("/");
+          $("#value2").text("" + num2);
+          $("#result").text("" + result);
+          // alert("Result= " + result);
+          // return false;
+          break;
+        default:
+
+      }
+    });
+  });
+</script>
+
+</html>
